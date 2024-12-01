@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Link, router } from "expo-router";
 
 const Login = () => {
   const navigation = useNavigation();
@@ -12,7 +13,7 @@ const Login = () => {
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => navigation.navigate("Dashboard")} // Navigasi ke Dashboard
+        onPress={() => router.push("/(tabs)")} // Navigasi ke Dashboard
       >
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
