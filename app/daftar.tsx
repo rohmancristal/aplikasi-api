@@ -1,12 +1,26 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { useRouter } from "expo-router"; 
 
 const Daftar = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleDaftar = () => {
+    // Validasi input (opsional)
+    if (!username || !email || !password) {
+      Alert.alert("Error", "Semua field harus diisi!");
+      return;
+    }
+
+    
+    console.log("User registered:", { username, email, password });
+
+    // Navigasi ke halaman login
+    router.push("/login"); 
+  };
 
   return (
     <View style={styles.container}>
@@ -14,11 +28,11 @@ const Daftar = () => {
       <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail} placeholderTextColor="#000" keyboardType="email-address" />
       <TextInput style={styles.input} placeholder="Password" value={password} onChangeText={setPassword} placeholderTextColor="#000" secureTextEntry />
 
-      <TouchableOpacity style={styles.registerButton}>
+      <TouchableOpacity style={styles.registerButton} onPress={handleDaftar}>
         <Text style={styles.registerButtonText}>Daftar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <TouchableOpacity onPress={() => router.push("/login")}>
         <Text style={styles.backToLoginText}>Kembali ke Login</Text>
       </TouchableOpacity>
     </View>

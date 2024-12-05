@@ -2,6 +2,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Link, router } from "expo-router";
 
 const DashboardScreen = () => {
   const navigation = useNavigation();
@@ -20,14 +21,14 @@ const DashboardScreen = () => {
           <Text style={styles.menuText}>Siswa</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Absen")}>
+        <TouchableOpacity style={styles.menuItem} onPress={() => router.replace("absen")}>
           <View style={[styles.icon, { backgroundColor: "#FFA500" }]}>
             <Text style={styles.iconText}>✏️</Text>
           </View>
           <Text style={styles.menuText}>Absen</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Laporan")}>
+        <TouchableOpacity style={styles.menuItem} onPress={() => router.replace("laporan")}>
           <View style={[styles.icon, { backgroundColor: "#FF0000" }]}>
             <Text style={styles.iconText}>📄</Text>
           </View>

@@ -1,8 +1,7 @@
-// screens/AbsenScreen.js
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
-const AbsenScreen = () => {
+const absen = () => {
   const [name, setName] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("Hadir");
 
@@ -11,8 +10,9 @@ const AbsenScreen = () => {
   };
 
   const handleAbsen = () => {
-    // Logika untuk mengirim data absen
-    console.log(`Nama: ${name}, Status Absen: ${selectedStatus}`);
+    // untuk mengirim data absen
+   console.log("Nama:", name, "Status Absen:", selectedStatus);
+
   };
 
   return (
@@ -95,4 +95,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AbsenScreen;
+export default absen;

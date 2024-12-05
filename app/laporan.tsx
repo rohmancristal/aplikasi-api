@@ -1,8 +1,7 @@
-// screens/LaporanScreen.js
 import React from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 
-const Laporan = () => {
+const laporan = () => {
   // Contoh data laporan absensi
   const laporanData = [
     { id: "1", nama: "Ali", nisn: "123456789", status: "Hadir" },
@@ -11,7 +10,7 @@ const Laporan = () => {
     { id: "4", nama: "Deni", nisn: "321654987", status: "Alpha" },
   ];
 
-  // Render item untuk setiap data laporan
+  // untuk setiap data laporan
   const renderLaporanItem = ({ item }) => (
     <View style={styles.itemContainer}>
       <Text style={styles.itemText}>Nama: {item.nama}</Text>
@@ -64,4 +63,4 @@ const styles = StyleSheet.create({
   }),
 });
 
-export default Laporan;
+export default laporan;

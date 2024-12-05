@@ -1,84 +1,43 @@
-import React from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { Link, router } from "expo-router";
+import { StyleSheet, Text, View, Image } from "react-native";
+import React, { useEffect } from "react";
+import { router } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 
-const Login = () => {
-  const navigation = useNavigation();
+SplashScreen.preventAutoHideAsync();
+setTimeout(SplashScreen.hideAsync, 5000);
 
+useEffect(() => {
+  setTimeout(() => {
+    SplashScreen.hideAsync(); // Menyembunyikan splash screen setelah beberapa detik
+    router.replace("/login"); // Ganti ke halaman Login
+  }, 3000); // Splash screen tampil selama 3 detik
+}, []);
+
+export default function index() {
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder="Username" placeholderTextColor="#000" />
-      <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#000" secureTextEntry />
-
-      <TouchableOpacity
-        style={styles.loginButton}
-        onPress={() => router.push("/(tabs)")} // Navigasi ke Dashboard
-      >
-        <Text style={styles.loginButtonText}>Login</Text>
-      </TouchableOpacity>
-
-      <Text style={styles.registerText}>
-        Belum punya akun?{" "}
-        <Text style={styles.linkText} onPress={() => navigation.navigate("Daftar")}>
-          Daftar
-        </Text>
-      </Text>
-
-      <TouchableOpacity onPress={() => navigation.navigate("LupaPassword")}>
-        <Text style={styles.forgotPasswordText}>Lupa Password?</Text>
-      </TouchableOpacity>
+      <Image source={require("../assets/images/splash.png")} style={styles.image} />
+      <Text style={styles.text}>Absensi</Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FFF",
-  },
-  input: {
-    width: "80%",
-    height: 50,
-    backgroundColor: "#FFF5F5",
-    borderRadius: 8,
-    paddingHorizontal: 15,
-    marginBottom: 20,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  loginButton: {
-    width: "80%",
-    height: 50,
     backgroundColor: "#00FF00",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 8,
-    marginTop: 10,
   },
-  loginButtonText: {
-    color: "#FFF",
-    fontSize: 18,
-    fontWeight: "bold",
+  image: {
+    width: 150,
+    height: 150,
+    resizeMode: "contain",
   },
-  registerText: {
+  text: {
     marginTop: 20,
-    color: "#000",
-  },
-  linkText: {
-    color: "#0000FF",
-    textDecorationLine: "underline",
-  },
-  forgotPasswordText: {
-    marginTop: 10,
-    color: "#0000FF",
-    textDecorationLine: "underline",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#000000",
   },
 });
-
-export default Login;
