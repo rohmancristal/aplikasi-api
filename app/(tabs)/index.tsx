@@ -14,7 +14,7 @@ const DashboardScreen = () => {
       </View>
 
       <View style={styles.menuContainer}>
-        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Siswa")}>
+        <TouchableOpacity style={styles.menuItem} onPress={() => router.replace("Siswa")}>
           <View style={[styles.icon, { backgroundColor: "#00FF00" }]}>
             <Text style={styles.iconText}>👥</Text>
           </View>
